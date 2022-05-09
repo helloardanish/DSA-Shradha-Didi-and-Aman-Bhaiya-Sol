@@ -172,3 +172,45 @@ int main()
     return 0;
 }
 
+
+
+// Using is_sorted_until library
+
+
+/*
+https://leetcode.com/problems/next-permutation/
+*/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+
+vector<int> nextPermutation(vector<int>& nums) {
+    auto i = is_sorted_until(nums.rbegin(), nums.rend());
+    if (i != nums.rend())
+        swap(*i, *upper_bound(nums.rbegin(), i, *i));
+    reverse(nums.rbegin(), i);
+    return nums;
+}
+
+
+int main()
+{
+  
+  vector<int> myarr1 {1,2,3};
+  //vector<int> myarr1 {3,2,1};
+  //vector<int> myarr1 {1,1,5};
+  
+  vector<int> ans = nextPermutation(myarr1);
+    
+  for(int x:ans){
+    cout << x << " ";
+  }
+  cout <<endl;
+    
+    return 0;
+}
