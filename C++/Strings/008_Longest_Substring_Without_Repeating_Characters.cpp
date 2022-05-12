@@ -63,8 +63,55 @@ int main()
 
 
 
+// Accepted, found from people comments. It is hard to get it fast but if you run below program and debug, 
+//you'll get the idea how it works. I've put a print so you don't have to do that. Just run on local or online IDE.
 
 
+/*
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
+*/
+
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+
+using namespace std;
+
+int lengthOfLongestSubstring(string s) {
+        int n = s.length();
+        
+        unordered_map<int, int>m;
+        int c = 0, maxlen = -1;
+        //pwwkew
+        for (int i = 0; i < n; i++) {
+            cout << "i is " << i << endl;
+            if (m.find(s[i]) == m.end() || (i - m[s[i]] > c)){
+                cout << "Inside if ch : "<<s[i] << endl;
+                c++;
+              }else {
+                cout << "Inside else ch : "<<s[i] << endl;
+                maxlen = max(maxlen, c);
+                c = i-m[s[i]];
+            }
+            m[s[i]] = i;
+            cout << "c: "<< c << ", maxlen " << maxlen << ", ch : " << s[i] << ", val: "<< m[s[i]] << endl;
+          cout << "\n\n\n" << endl;
+        }
+        
+        return max(maxlen, c);
+    }
+int main()
+{
+  
+
+  //string s = "abcabcbb";
+  string s = "pwwkew";
+  
+  int ans = lengthOfLongestSubstring(s); 
+  cout <<ans << endl;
+  return 0;
+}
 
 
 
