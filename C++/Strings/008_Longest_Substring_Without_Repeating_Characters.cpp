@@ -61,8 +61,6 @@ int main()
 
 
 
-
-
 // Accepted, found from people comments. It is hard to get it fast but if you run below program and debug, 
 //you'll get the idea how it works. I've put a print so you don't have to do that. Just run on local or online IDE.
 
@@ -144,3 +142,63 @@ public:
 
 // failed for input dvdf >> output 2, expected 3.
 
+
+
+// Straightforward solution using unordered_map
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n=s.length();
+        if(n==0)
+            return 0;
+        unordered_set<char> st;
+        int maxsize=0;
+        int i=0,j=0;
+        while(j<n)
+        {
+            if(st.count(s[j])==0)
+            {
+                st.insert(s[j]);
+                maxsize=max(maxsize,(int)st.size());
+                j++;
+            }
+            else
+            {
+                st.erase(s[i]);
+                i++;
+            }
+        }
+        return maxsize;
+    }
+};
+
+
+
+
+// Since we know there are only 256 characters, so we can directly create hashmap with default value as -1.
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int maxLen = 0;
+        int start = 0;
+        
+        vector<int> hash(256,-1);
+        
+        for(int end=0; end<s.size(); end++)
+        {
+            if(hash[s[end]] != -1)
+            {
+                start = max(start,hash[s[end]]+1);
+            }
+            maxLen = max(maxLen, end - start + 1);
+            hash[s[end]] = end;
+        }
+        
+        return maxLen;
+    }
+};
+
+
+// It seems the best solution for this problem.
