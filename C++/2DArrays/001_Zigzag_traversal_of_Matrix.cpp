@@ -156,7 +156,6 @@ int main()
                               { 9, 10, 11, 12 },
                               { 13, 14, 15, 16 },
                               { 17, 18, 19, 20 },};
-    cout << "Given matrix is " << endl;
     printMatrix(M);
  
     
@@ -170,7 +169,6 @@ int main()
 Output
 
 
-Given matrix is 
 1 
 5 2 
 9 6 3 
