@@ -89,3 +89,96 @@ int main()
     diagonalOrder(M);
     return 0;
 }
+
+
+
+
+// Here I made the simplest program for you beginners to understand easily
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+
+
+
+using namespace std;
+
+void printMatrix(vector<vector<int>> matrix)
+{
+  int row = matrix.size();
+  int col = matrix[0].size();
+
+  //int noofdiagonal = row+col-1; 
+  //because one diagonal appears two times
+  // from starting row and ending column
+
+  //diagonal upwards formulae is i-1 and j+1
+
+  // first half from top
+
+  for(int i=0; i<row; i++){
+    int currrow = i;
+    int currcol = 0;
+
+    while(currrow>=0 && currcol<col){
+      cout << matrix[currrow][currcol] << " ";
+      currrow--;
+      currcol++;
+    }
+    cout <<endl;
+  }
+
+
+  // other half from bottom
+  for(int i=1; i<=col-1; i++){
+    int currrow = row-1;
+    int currcol = i;
+
+    while(currrow>=0 && currcol<col){
+      cout << matrix[currrow][currcol] << " ";
+      currrow--;
+      currcol++;
+    }
+    cout << endl;
+  }
+  
+}
+
+
+
+int main()
+{
+    vector<vector<int>> M = { { 1, 2, 3, 4 },
+                              { 5, 6, 7, 8 },
+                              { 9, 10, 11, 12 },
+                              { 13, 14, 15, 16 },
+                              { 17, 18, 19, 20 },};
+    cout << "Given matrix is " << endl;
+    printMatrix(M);
+ 
+    
+    return 0;
+}
+
+
+
+/*
+
+Output
+
+
+Given matrix is 
+1 
+5 2 
+9 6 3 
+13 10 7 4 
+17 14 11 8 
+18 15 12 
+19 16 
+20 
+
+
+*/
