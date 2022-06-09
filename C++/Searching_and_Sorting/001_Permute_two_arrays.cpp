@@ -46,3 +46,51 @@ int main()
 							cout << "No";
 	return 0;
 }
+
+
+
+
+
+// Using vector
+
+
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+bool ifPairExists(vector<int> arr1, vector<int> arr2, int k){
+  if(arr1.size()!=arr2.size()) return false;
+  if(arr1.size()==0 || arr2.size()==0) return true;
+  
+  sort(arr1.begin(), arr1.end());
+
+  sort(arr2.begin(), arr2.end(), greater<int>());
+
+  for(int i=0; i<arr1.size(); i++){
+    int sum = arr1[i] + arr2[i];
+    if(sum<k){
+      return false;
+    }
+  }
+  return true;
+} 
+
+int main() {
+
+  vector<int> arr1 = {2,1,3};
+  vector<int> arr2 = {7,8,9};
+
+  //vector<int> arr1 = {1,2,2,1};
+  //vector<int> arr2 = {3,3,3,4};
+  int k=10;
+  bool ans = ifPairExists(arr1, arr2, k);
+  if(ans){
+    cout << "YES" <<endl;
+  }else{
+    cout << "NO" <<endl;
+  }
+  cout << "\n";
+}
