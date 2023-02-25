@@ -1,2 +1,3 @@
-# DSA-Shradha-Didi-and-Aman-Bhaiya-Sol
-All the dsa questions and answers from Shradha Didi(aka Microsoft wali didi :p) and Aman Bhaiya. I'm using c++ but you can use the same logic and convert it in any programming language.
+This is Basic DSA Questions In order to solve the good levelquestion or the application based question on leetcode you need to be well versed with these type of questions.
+--Pravin Kumar 
+--C++ Programmer And a Great Coder of All Time.
